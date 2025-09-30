@@ -54,6 +54,46 @@ export default function Header() {
             >
               API Reference
             </Link>
+            <Link 
+              to="/faq" 
+              className={`transition-colors ${
+                isActive('/faq') 
+                  ? 'text-white border-b-2 border-slate-500' 
+                  : 'text-slate-300 hover:text-white'
+              }`}
+            >
+              FAQ
+            </Link>
+            <Link 
+              to="/blog" 
+              className={`transition-colors ${
+                isActive('/blog') 
+                  ? 'text-white border-b-2 border-slate-500' 
+                  : 'text-slate-300 hover:text-white'
+              }`}
+            >
+              Blog
+            </Link>
+            <Link 
+              to="/contributing" 
+              className={`transition-colors ${
+                isActive('/contributing') 
+                  ? 'text-white border-b-2 border-slate-500' 
+                  : 'text-slate-300 hover:text-white'
+              }`}
+            >
+              Contributing
+            </Link>
+            <Link 
+              to="/about" 
+              className={`transition-colors ${
+                isActive('/about') 
+                  ? 'text-white border-b-2 border-slate-500' 
+                  : 'text-slate-300 hover:text-white'
+              }`}
+            >
+              About
+            </Link>
           </nav>
         </div>
       </div>
