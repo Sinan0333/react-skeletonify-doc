@@ -11,28 +11,12 @@ export default function About() {
 
   const team = [
     {
-      name: "Alex Chen",
-      role: "Creator & Lead Maintainer",
-      bio: "Full-stack developer passionate about user experience and performance. Created React Skeletonify to solve loading state challenges in modern web apps.",
-      github: "alexchen",
-      portfolio: "alexchen.dev",
-      avatar: "AC"
-    },
-    {
-      name: "Sarah Rodriguez",
-      role: "Core Contributor",
-      bio: "Frontend specialist focused on accessibility and design systems. Leads the accessibility initiatives and design token integration.",
-      github: "sarahrodriguez",
-      portfolio: "sarah-codes.com",
-      avatar: "SR"
-    },
-    {
-      name: "Mike Johnson",
-      role: "Performance Engineer",
-      bio: "Performance optimization expert. Responsible for keeping React Skeletonify lightweight and fast across all platforms.",
-      github: "mikejohnson",
-      portfolio: "mikeperf.dev",
-      avatar: "MJ"
+      name: "Sinan M P",
+      role: "Creator & Lead Developer",
+      bio: "Full-stack developer passionate about creating developer tools that improve user experience. Created React Skeletonify to simplify skeleton loading state implementation in React applications.",
+      github: "sinan0333",
+      portfolio: "dev.to/sinan0333",
+      avatar: "SM"
     }
   ];
 
@@ -50,8 +34,8 @@ export default function About() {
           </div>
           <h1 className="text-4xl font-bold text-white mb-6">About React Skeletonify</h1>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-            Born from the need to create better loading experiences, React Skeletonify has grown into 
-            a comprehensive solution for skeleton loading states in React applications.
+            A smart and dynamic skeleton loader library that automatically matches your component structure.
+            Stop creating manual skeletons - wrap your components and let React Skeletonify handle the rest.
           </p>
         </div>
 
@@ -61,18 +45,19 @@ export default function About() {
             <h2 className="text-3xl font-semibold text-white mb-6">Our Story</h2>
             <div className="prose prose-slate prose-invert max-w-none">
               <p className="text-slate-300 text-lg leading-relaxed mb-6">
-                React Skeletonify started in 2022 when our team was frustrated with the lack of good skeleton loading 
-                solutions for React. Existing libraries were either too heavy, not customizable enough, or didn't 
-                handle accessibility properly.
+                React Skeletonify was created to solve a common problem: creating skeleton loaders for every component
+                is tedious and time-consuming. Instead of manually crafting skeleton screens, developers needed a
+                solution that could automatically generate them based on component structure.
               </p>
               <p className="text-slate-300 text-lg leading-relaxed mb-6">
-                We wanted something that was lightweight, accessible by default, and easy to integrate into any 
-                design system. After months of development and testing with real-world applications, React Skeletonify 
-                was born.
+                The library uses an intelligent wrapper component (SkeletonWrapper) that analyzes your component's
+                DOM structure and creates matching skeleton placeholders automatically. Combined with global configuration
+                through SkeletonProvider, it offers consistent loading states across your entire application.
               </p>
               <p className="text-slate-300 text-lg leading-relaxed">
-                Today, React Skeletonify powers loading states for thousands of applications worldwide, from small 
-                startups to Fortune 500 companies. Our mission remains the same: make loading states that users love.
+                React Skeletonify improves perceived performance, keeps layouts consistent during loading, and provides
+                a professional user experience. It's lightweight, highly customizable, and works seamlessly with any
+                React application.
               </p>
             </div>
           </div>
@@ -96,8 +81,8 @@ export default function About() {
 
         {/* Team Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-semibold text-white mb-8 text-center">Meet the Team</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <h2 className="text-3xl font-semibold text-white mb-8 text-center">Creator</h2>
+          <div className="grid md:grid-cols-1 gap-8 max-w-md mx-auto">
             {team.map((member, index) => (
               <div key={index} className="bg-slate-800 rounded-xl p-6 border border-slate-700">
                 <div className="text-center mb-6">

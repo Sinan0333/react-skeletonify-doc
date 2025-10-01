@@ -41,22 +41,26 @@ export default function Documentation() {
               <h2 className="text-2xl font-semibold text-white">Quick Start</h2>
             </div>
             <div className="space-y-4">
-              <p className="text-slate-300">Get started with a basic skeleton loader:</p>
+              <p className="text-slate-300">Import the CSS file and wrap your components with SkeletonWrapper:</p>
               <div className="bg-gray-900 rounded-lg p-4 border border-slate-600 overflow-x-auto">
                 <pre className="text-slate-300 font-mono text-sm">
-{`import { Skeleton } from 'react-skeletonify';
+{`import { SkeletonWrapper } from 'react-skeletonify';
+import "react-skeletonify/dist/index.css";
 
-function MyComponent() {
+function ProfileCard({ loading }) {
   return (
-    <div>
-      <Skeleton height={20} width="100%" />
-      <Skeleton height={16} width="80%" />
-      <Skeleton height={16} width="60%" />
-    </div>
+    <SkeletonWrapper loading={loading}>
+      <div className="card">
+        <img src="/profile.jpg" alt="Profile" />
+        <h3>Jane Doe</h3>
+        <p>Frontend Developer</p>
+      </div>
+    </SkeletonWrapper>
   );
 }`}
                 </pre>
               </div>
+              <p className="text-slate-300 mt-4">That's it! When loading is true, React Skeletonify automatically creates skeleton placeholders that match your component structure.</p>
             </div>
           </section>
 
@@ -69,26 +73,37 @@ function MyComponent() {
               <h2 className="text-2xl font-semibold text-white">Configuration</h2>
             </div>
             <div className="space-y-4">
-              <p className="text-slate-300">Customize the appearance and behavior of your skeleton loaders:</p>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="bg-gray-900 rounded-lg p-4 border border-slate-600">
-                  <h3 className="text-slate-200 font-semibold mb-2">Props</h3>
-                  <ul className="text-slate-400 text-sm space-y-1">
-                    <li>• height: number | string</li>
-                    <li>• width: number | string</li>
-                    <li>• borderRadius: number</li>
-                    <li>• animation: 'pulse' | 'wave'</li>
-                  </ul>
-                </div>
-                <div className="bg-gray-900 rounded-lg p-4 border border-slate-600">
-                  <h3 className="text-slate-200 font-semibold mb-2">Themes</h3>
-                  <ul className="text-slate-400 text-sm space-y-1">
-                    <li>• Light theme support</li>
-                    <li>• Dark theme support</li>
-                    <li>• Custom color schemes</li>
-                    <li>• CSS variable overrides</li>
-                  </ul>
-                </div>
+              <p className="text-slate-300">Use SkeletonProvider to set global configuration for all skeleton loaders in your app:</p>
+              <div className="bg-gray-900 rounded-lg p-4 border border-slate-600 overflow-x-auto">
+                <pre className="text-slate-300 font-mono text-sm">
+{`import { SkeletonProvider } from 'react-skeletonify';
+
+function App() {
+  return (
+    <SkeletonProvider
+      config={{
+        animation: "animation-1",
+        borderRadius: "8px",
+        animationSpeed: 2,
+        background: "#e0e0e0",
+        exceptTags: ["button", "input"]
+      }}
+    >
+      <YourApp />
+    </SkeletonProvider>
+  );
+}`}
+                </pre>
+              </div>
+              <div className="mt-4 bg-gray-900 rounded-lg p-4 border border-slate-600">
+                <h3 className="text-slate-200 font-semibold mb-3">Available Options</h3>
+                <ul className="text-slate-400 text-sm space-y-2">
+                  <li>• <span className="text-slate-300 font-mono">animation</span> - Choose animation style ("animation-1", "animation-2", etc.)</li>
+                  <li>• <span className="text-slate-300 font-mono">animationSpeed</span> - Control animation speed (number in seconds)</li>
+                  <li>• <span className="text-slate-300 font-mono">background</span> - Set custom background color</li>
+                  <li>• <span className="text-slate-300 font-mono">borderRadius</span> - Set border radius for skeleton elements</li>
+                  <li>• <span className="text-slate-300 font-mono">exceptTags</span> - Array of HTML tags to exclude from skeleton loading</li>
+                </ul>
               </div>
             </div>
           </section>

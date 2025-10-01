@@ -6,39 +6,63 @@ export default function Examples() {
 
   const examples = [
     {
-      title: "Card Skeleton",
-      description: "Perfect for loading card-based layouts",
-      code: `<div className="bg-white p-6 rounded-lg shadow">
-  <Skeleton height={200} width="100%" borderRadius={8} />
-  <Skeleton height={24} width="70%" className="mt-4" />
-  <Skeleton height={16} width="100%" className="mt-2" />
-  <Skeleton height={16} width="80%" className="mt-1" />
-</div>`
+      title: "Profile Card with SkeletonWrapper",
+      description: "Automatically creates skeleton for the entire card",
+      code: `import { SkeletonWrapper } from 'react-skeletonify';
+import "react-skeletonify/dist/index.css";
+
+function ProfileCard({ loading }) {
+  return (
+    <SkeletonWrapper loading={loading}>
+      <div className="card">
+        <img src="/profile.jpg" alt="Profile" />
+        <h3>Jane Doe</h3>
+        <p>Frontend Developer</p>
+        <button>View Profile</button>
+      </div>
+    </SkeletonWrapper>
+  );
+}`
     },
     {
-      title: "List Item Skeleton",
-      description: "Great for loading lists and feeds",
-      code: `<div className="flex items-center space-x-4 p-4">
-  <Skeleton height={48} width={48} borderRadius={24} />
-  <div className="flex-1">
-    <Skeleton height={16} width="60%" />
-    <Skeleton height={14} width="40%" className="mt-2" />
-  </div>
-</div>`
+      title: "Global Configuration",
+      description: "Set consistent styles across your app",
+      code: `import { SkeletonProvider } from 'react-skeletonify';
+
+function App() {
+  return (
+    <SkeletonProvider
+      config={{
+        animation: "animation-1",
+        borderRadius: "8px",
+        animationSpeed: 2
+      }}
+    >
+      <YourApp />
+    </SkeletonProvider>
+  );
+}`
     },
     {
-      title: "Table Skeleton",
-      description: "Ideal for data tables and grids",
-      code: `<div className="space-y-3">
-  {[...Array(5)].map((_, i) => (
-    <div key={i} className="flex space-x-4">
-      <Skeleton height={16} width="20%" />
-      <Skeleton height={16} width="30%" />
-      <Skeleton height={16} width="25%" />
-      <Skeleton height={16} width="15%" />
-    </div>
-  ))}
-</div>`
+      title: "E-commerce Product Page",
+      description: "Skip skeleton for interactive elements",
+      code: `import { SkeletonWrapper } from 'react-skeletonify';
+
+function ProductPage({ loading }) {
+  return (
+    <SkeletonWrapper
+      loading={loading}
+      config={{ exceptTags: ["button", "input"] }}
+    >
+      <div className="product">
+        <img src="/product.jpg" alt="Product" />
+        <h2>Premium Headphones</h2>
+        <p className="price">$199.99</p>
+        <button>Add to Cart</button>
+      </div>
+    </SkeletonWrapper>
+  );
+}`
     }
   ];
 
@@ -48,7 +72,7 @@ export default function Examples() {
         <div className="mb-12">
           <h1 className="text-4xl font-bold text-white mb-4">Examples</h1>
           <p className="text-xl text-slate-300">
-            Real-world examples and use cases for React Skeletonify
+            See how React Skeletonify automatically creates skeleton loaders for your components
           </p>
         </div>
 

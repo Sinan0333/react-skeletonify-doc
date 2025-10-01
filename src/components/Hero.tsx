@@ -18,8 +18,8 @@ export default function Hero() {
             React Skeletonify
           </h1>
           <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
-            Create beautiful, accessible skeleton loading screens for your React applications. 
-            Improve user experience with smooth loading states that match your design system.
+            Smart and dynamic skeleton loaders that automatically match your component structure.
+            Stop manually creating skeletons - wrap your components and let React Skeletonify do the rest.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Link 
@@ -42,9 +42,9 @@ export default function Hero() {
               <div className="bg-slate-700 w-12 h-12 rounded-lg flex items-center justify-center mb-4 mx-auto">
                 <Code className="h-6 w-6 text-slate-300" />
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2">Easy Integration</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">Automatic Skeleton Creation</h3>
               <p className="text-slate-400">
-                Drop-in components that work seamlessly with your existing React codebase.
+                Simply wrap your components with SkeletonWrapper - no manual skeleton coding required.
               </p>
             </div>
             
@@ -52,9 +52,9 @@ export default function Hero() {
               <div className="bg-slate-700 w-12 h-12 rounded-lg flex items-center justify-center mb-4 mx-auto">
                 <Zap className="h-6 w-6 text-slate-300" />
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2">High Performance</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">Global Configuration</h3>
               <p className="text-slate-400">
-                Lightweight and optimized for fast loading times and smooth animations.
+                Set consistent styles across your entire app with SkeletonProvider configuration.
               </p>
             </div>
             
@@ -62,9 +62,9 @@ export default function Hero() {
               <div className="bg-slate-700 w-12 h-12 rounded-lg flex items-center justify-center mb-4 mx-auto">
                 <Shield className="h-6 w-6 text-slate-300" />
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2">Accessible</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">Highly Customizable</h3>
               <p className="text-slate-400">
-                Built with accessibility in mind, supporting screen readers and keyboard navigation.
+                Control animations, colors, border radius, and exclude specific elements with ease.
               </p>
             </div>
           </div>

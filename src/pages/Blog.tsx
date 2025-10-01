@@ -4,57 +4,58 @@ import { Calendar, User, ArrowRight, BookOpen } from 'lucide-react';
 export default function Blog() {
   const posts = [
     {
-      title: "React Skeletonify v2.0 - Major Performance Improvements",
-      excerpt: "We're excited to announce the release of React Skeletonify v2.0 with significant performance improvements, new animation options, and better TypeScript support.",
-      author: "Sarah Chen",
-      date: "December 15, 2024",
-      readTime: "5 min read",
-      category: "Release Notes",
-      featured: true
+      title: "Building Dynamic Skeleton Loaders in React the Easy Way",
+      excerpt: "Learn how to create smart and dynamic skeleton loaders that automatically match your component structure. No more manual skeleton creation for every component - React Skeletonify does it for you!",
+      author: "Sinan M P",
+      date: "September 15, 2024",
+      readTime: "8 min read",
+      category: "Tutorial",
+      featured: true,
+      link: "https://dev.to/sinan0333/building-dynamic-skeleton-loaders-in-react-the-easy-way-1fae"
     },
     {
-      title: "Building Better Loading States: A Complete Guide",
-      excerpt: "Learn how to create engaging loading experiences that keep users engaged. This comprehensive guide covers best practices, common pitfalls, and advanced techniques.",
-      author: "Mike Rodriguez",
-      date: "December 10, 2024",
-      readTime: "8 min read",
+      title: "Why Skeleton Loading Matters for User Experience",
+      excerpt: "Skeleton loaders improve perceived performance and keep layouts consistent during data loading. Discover how they provide a more professional user experience and reduce user frustration.",
+      author: "Sinan M P",
+      date: "September 10, 2024",
+      readTime: "5 min read",
+      category: "UX Design"
+    },
+    {
+      title: "Getting Started with React Skeletonify",
+      excerpt: "A quick start guide to implementing React Skeletonify in your project. Learn how to wrap your components with SkeletonWrapper and customize global settings with SkeletonProvider.",
+      author: "Sinan M P",
+      date: "September 5, 2024",
+      readTime: "6 min read",
       category: "Tutorial"
     },
     {
-      title: "Optimizing Skeleton Screens for Mobile Performance",
-      excerpt: "Mobile users expect fast, responsive experiences. Discover how to optimize your skeleton screens for mobile devices and improve perceived performance.",
-      author: "Emily Johnson",
-      date: "December 5, 2024",
-      readTime: "6 min read",
-      category: "Performance"
-    },
-    {
-      title: "Accessibility in Loading States: What You Need to Know",
-      excerpt: "Making your loading states accessible is crucial for inclusive design. Learn about ARIA labels, screen reader support, and motion preferences.",
-      author: "David Park",
-      date: "November 28, 2024",
+      title: "Global Configuration with SkeletonProvider",
+      excerpt: "Set consistent skeleton styles across your entire application using SkeletonProvider. Control animations, border radius, speed, and more from a single configuration.",
+      author: "Sinan M P",
+      date: "August 28, 2024",
       readTime: "7 min read",
-      category: "Accessibility"
+      category: "Configuration"
     },
     {
-      title: "Advanced Animation Techniques with React Skeletonify",
-      excerpt: "Go beyond basic pulse animations. Explore wave effects, staggered animations, and custom CSS transitions to create unique loading experiences.",
-      author: "Lisa Wang",
-      date: "November 20, 2024",
+      title: "Customization Options: Fine-tune Your Skeleton Loaders",
+      excerpt: "Explore all customization options including animation speed, background colors, border radius, and element exclusions. Create skeleton loaders that perfectly match your design system.",
+      author: "Sinan M P",
+      date: "August 20, 2024",
       readTime: "10 min read",
       category: "Tutorial"
     },
     {
-      title: "Case Study: Reducing Bounce Rate with Better Loading States",
-      excerpt: "How TechCorp reduced their bounce rate by 23% by implementing contextual skeleton screens. A detailed analysis of the implementation and results.",
-      author: "Alex Thompson",
-      date: "November 15, 2024",
+      title: "Real-World Use Cases: E-commerce Product Pages",
+      excerpt: "See how React Skeletonify works in production with e-commerce applications. Learn best practices for excluding certain elements and creating engaging loading states.",
+      author: "Sinan M P",
+      date: "August 15, 2024",
       readTime: "12 min read",
       category: "Case Study"
     }
   ];
 
-  const categories = ["All", "Tutorial", "Release Notes", "Performance", "Accessibility", "Case Study"];
+  const categories = ["All", "Tutorial", "UX Design", "Configuration", "Case Study"];
 
   return (
     <div className="min-h-screen bg-gray-900 pt-16">
