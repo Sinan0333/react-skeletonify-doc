@@ -1,5 +1,6 @@
 import React from 'react';
-import { Book, Download, Code2, Settings } from 'lucide-react';
+import { Book, Download, Code2, Settings, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Documentation() {
   return (
@@ -95,15 +96,14 @@ function App() {
 }`}
                 </pre>
               </div>
-              <div className="mt-4 bg-gray-900 rounded-lg p-4 border border-slate-600">
-                <h3 className="text-slate-200 font-semibold mb-3">Available Options</h3>
-                <ul className="text-slate-400 text-sm space-y-2">
-                  <li>• <span className="text-slate-300 font-mono">animation</span> - Choose animation style ("animation-1", "animation-2", etc.)</li>
-                  <li>• <span className="text-slate-300 font-mono">animationSpeed</span> - Control animation speed (number in seconds)</li>
-                  <li>• <span className="text-slate-300 font-mono">background</span> - Set custom background color</li>
-                  <li>• <span className="text-slate-300 font-mono">borderRadius</span> - Set border radius for skeleton elements</li>
-                  <li>• <span className="text-slate-300 font-mono">exceptTags</span> - Array of HTML tags to exclude from skeleton loading</li>
-                </ul>
+              <div className="mt-4">
+                <Link
+                  to="/api-reference"
+                  className="inline-flex items-center space-x-2 text-slate-300 hover:text-white transition-colors group"
+                >
+                  <span>View all configuration options in the API Reference</span>
+                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </div>
             </div>
           </section>
