@@ -125,15 +125,69 @@ export default function ApiReference() {
   ];
 
   const htmlTagGroups = [
-    "TEXT_TAGS",
-    "STRUCTURE_TAGS",
-    "METADATA_TAGS",
-    "LIST_TAGS",
-    "TABLE_TAGS",
-    "FORM_TAGS",
-    "MEDIA_TAGS",
-    "INTERACTIVE_TAGS",
-    "MISC_TAGS",
+    {
+      name: "TEXT_TAGS",
+      description: "Text & Content",
+      tags: [
+        "p", "span", "h1", "h2", "h3", "h4", "h5", "h6", "b", "strong",
+        "i", "em", "u", "mark", "small", "sup", "sub", "abbr", "cite",
+        "q", "blockquote", "code", "pre", "samp", "kbd", "var", "time",
+        "br", "wbr"
+      ]
+    },
+    {
+      name: "STRUCTURE_TAGS",
+      description: "Sectioning / Structure",
+      tags: [
+        "html", "head", "body", "main", "header", "footer", "nav",
+        "section", "article", "aside"
+      ]
+    },
+    {
+      name: "METADATA_TAGS",
+      description: "Metadata",
+      tags: ["base", "link", "meta", "style", "title"]
+    },
+    {
+      name: "LIST_TAGS",
+      description: "Lists",
+      tags: ["ul", "ol", "li", "dl", "dt", "dd"]
+    },
+    {
+      name: "TABLE_TAGS",
+      description: "Tables",
+      tags: [
+        "table", "caption", "thead", "tbody", "tfoot", "tr", "th",
+        "td", "col", "colgroup"
+      ]
+    },
+    {
+      name: "FORM_TAGS",
+      description: "Forms & Inputs",
+      tags: [
+        "form", "input", "textarea", "button", "label", "select",
+        "option", "optgroup", "fieldset", "legend", "datalist",
+        "output", "meter", "progress"
+      ]
+    },
+    {
+      name: "MEDIA_TAGS",
+      description: "Media",
+      tags: [
+        "img", "audio", "video", "source", "track", "picture",
+        "iframe", "embed", "object", "map", "area", "canvas"
+      ]
+    },
+    {
+      name: "INTERACTIVE_TAGS",
+      description: "Interactive",
+      tags: ["details", "summary", "dialog", "script", "noscript", "template"]
+    },
+    {
+      name: "MISC_TAGS",
+      description: "Other / Inline semantics",
+      tags: ["ins", "del", "s", "bdi", "bdo", "ruby", "rt", "rp"]
+    }
   ];
 
   const defaultBackgrounds = [
@@ -295,13 +349,30 @@ export default function ApiReference() {
               <p className="text-slate-300 mb-6">
                 Available tag groups that can be used with the <span className="font-mono text-slate-200">exceptTagGroups</span> configuration option:
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+              <div className="space-y-4">
                 {htmlTagGroups.map((group, index) => (
                   <div
                     key={index}
-                    className="bg-slate-900 border border-slate-600 rounded-lg px-4 py-3"
+                    className="bg-slate-900 border border-slate-600 rounded-lg p-4"
                   >
-                    <code className="text-slate-300 text-sm">{group}</code>
+                    <div className="flex items-baseline space-x-3 mb-3">
+                      <code className="text-slate-200 font-semibold text-sm">
+                        {group.name}
+                      </code>
+                      <span className="text-slate-400 text-sm">
+                        {group.description}
+                      </span>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {group.tags.map((tag, tagIndex) => (
+                        <span
+                          key={tagIndex}
+                          className="bg-slate-800 border border-slate-600 rounded px-2 py-1 text-xs font-mono text-slate-300"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 ))}
               </div>
