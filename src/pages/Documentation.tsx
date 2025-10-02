@@ -1,6 +1,5 @@
-import React from 'react';
-import { Book, Download, Code2, Settings, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Download, Code2, Settings, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Documentation() {
   return (
@@ -20,15 +19,23 @@ export default function Documentation() {
               <div className="bg-slate-700 w-10 h-10 rounded-lg flex items-center justify-center">
                 <Download className="h-5 w-5 text-slate-300" />
               </div>
-              <h2 className="text-2xl font-semibold text-white">Installation</h2>
+              <h2 className="text-2xl font-semibold text-white">
+                Installation
+              </h2>
             </div>
             <div className="space-y-4">
-              <p className="text-slate-300">Install React Skeletonify using your preferred package manager:</p>
+              <p className="text-slate-300">
+                Install React Skeletonify using your preferred package manager:
+              </p>
               <div className="bg-gray-900 rounded-lg p-4 border border-slate-600">
-                <code className="text-slate-300 font-mono">npm install react-skeletonify</code>
+                <code className="text-slate-300 font-mono">
+                  npm install react-skeletonify
+                </code>
               </div>
               <div className="bg-gray-900 rounded-lg p-4 border border-slate-600">
-                <code className="text-slate-300 font-mono">yarn add react-skeletonify</code>
+                <code className="text-slate-300 font-mono">
+                  yarn add react-skeletonify
+                </code>
               </div>
             </div>
           </section>
@@ -42,10 +49,13 @@ export default function Documentation() {
               <h2 className="text-2xl font-semibold text-white">Quick Start</h2>
             </div>
             <div className="space-y-4">
-              <p className="text-slate-300">Import the CSS file and wrap your components with SkeletonWrapper:</p>
+              <p className="text-slate-300">
+                Import the CSS file and wrap your components with
+                SkeletonWrapper:
+              </p>
               <div className="bg-gray-900 rounded-lg p-4 border border-slate-600 overflow-x-auto">
                 <pre className="text-slate-300 font-mono text-sm">
-{`import { SkeletonWrapper } from 'react-skeletonify';
+                  {`import { SkeletonWrapper } from 'react-skeletonify';
 import "react-skeletonify/dist/index.css";
 
 function ProfileCard({ loading }) {
@@ -61,7 +71,11 @@ function ProfileCard({ loading }) {
 }`}
                 </pre>
               </div>
-              <p className="text-slate-300 mt-4">That's it! When loading is true, React Skeletonify automatically creates skeleton placeholders that match your component structure.</p>
+              <p className="text-slate-300 mt-4">
+                That's it! When loading is true, React Skeletonify automatically
+                creates skeleton placeholders that match your component
+                structure.
+              </p>
             </div>
           </section>
 
@@ -71,13 +85,18 @@ function ProfileCard({ loading }) {
               <div className="bg-slate-700 w-10 h-10 rounded-lg flex items-center justify-center">
                 <Settings className="h-5 w-5 text-slate-300" />
               </div>
-              <h2 className="text-2xl font-semibold text-white">Configuration</h2>
+              <h2 className="text-2xl font-semibold text-white">
+                Configuration
+              </h2>
             </div>
             <div className="space-y-4">
-              <p className="text-slate-300">Use SkeletonProvider to set global configuration for all skeleton loaders in your app:</p>
+              <p className="text-slate-300">
+                Use SkeletonProvider to set global configuration for all
+                skeleton loaders in your app:
+              </p>
               <div className="bg-gray-900 rounded-lg p-4 border border-slate-600 overflow-x-auto">
                 <pre className="text-slate-300 font-mono text-sm">
-{`import { SkeletonProvider } from 'react-skeletonify';
+                  {`import { SkeletonProvider } from 'react-skeletonify';
 
 function App() {
   return (
@@ -98,10 +117,11 @@ function App() {
               </div>
               <div className="mt-4">
                 <Link
-                  to="/api-reference"
-                  className="inline-flex items-center space-x-2 text-slate-300 hover:text-white transition-colors group"
-                >
-                  <span>View all configuration options in the API Reference</span>
+                  to="/api"
+                  className="inline-flex items-center space-x-2 text-slate-300 hover:text-white transition-colors group">
+                  <span>
+                    View all configuration options in the API Reference
+                  </span>
                   <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
