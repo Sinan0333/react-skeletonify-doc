@@ -1,7 +1,16 @@
 import React from "react";
-import { Code, FileText, Zap, Settings2, Tag, Palette } from "lucide-react";
+import { Code, FileText, Zap, Settings2, Tag, Palette, Package } from "lucide-react";
 
 export default function ApiReference() {
+  const hooks = [
+    {
+      name: "useSkeleton",
+      description: "Hook to access the skeleton configuration context",
+      returns: "SkeletonConfig",
+      usage: "const config = useSkeleton();",
+    },
+  ];
+
   const components = [
     {
       name: "SkeletonWrapper",
@@ -196,6 +205,24 @@ export default function ApiReference() {
     { animation: "animation-3", background: "hsl(210, 20%, 90%)" },
   ];
 
+  const animations = [
+    {
+      name: "animation-1",
+      description: "Pulse/fade effect that transitions opacity",
+      keyframes: "0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; }",
+    },
+    {
+      name: "animation-2",
+      description: "Shimmer/wave effect with moving background",
+      keyframes: "100% { background-position: -100% 0; }",
+    },
+    {
+      name: "animation-3",
+      description: "Color alternating effect between light shades",
+      keyframes: "0% { background-color: hsl(200, 20%, 80%); } 100% { background-color: hsl(200, 20%, 95%); }",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-gray-900 pt-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -207,6 +234,35 @@ export default function ApiReference() {
         </div>
 
         <div className="space-y-12">
+          {/* Package Exports Section */}
+          <section>
+            <div className="flex items-center space-x-3 mb-8">
+              <div className="bg-slate-700 w-10 h-10 rounded-lg flex items-center justify-center">
+                <Package className="h-5 w-5 text-slate-300" />
+              </div>
+              <h2 className="text-3xl font-semibold text-white">Package Exports</h2>
+            </div>
+
+            <div className="bg-slate-800 rounded-xl border border-slate-700 p-6">
+              <p className="text-slate-300 mb-4">
+                All exported components, hooks, and types from react-skeletonify:
+              </p>
+              <div className="bg-gray-900 rounded-lg p-4 border border-slate-600 overflow-x-auto">
+                <pre className="text-slate-300 font-mono text-sm">
+{`import {
+  SkeletonWrapper,
+  SkeletonProvider,
+  useSkeleton,
+  type SkeletonConfig
+} from 'react-skeletonify';
+
+// Don't forget to import the CSS
+import 'react-skeletonify/dist/index.css';`}
+                </pre>
+              </div>
+            </div>
+          </section>
+
           {/* Components Section */}
           <section>
             <div className="flex items-center space-x-3 mb-8">
@@ -266,6 +322,44 @@ export default function ApiReference() {
                         ))}
                       </tbody>
                     </table>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Hooks Section */}
+          <section>
+            <div className="flex items-center space-x-3 mb-8">
+              <div className="bg-slate-700 w-10 h-10 rounded-lg flex items-center justify-center">
+                <Zap className="h-5 w-5 text-slate-300" />
+              </div>
+              <h2 className="text-3xl font-semibold text-white">Hooks</h2>
+            </div>
+
+            <div className="space-y-8">
+              {hooks.map((hook, index) => (
+                <div
+                  key={index}
+                  className="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden">
+                  <div className="p-6 border-b border-slate-700">
+                    <h3 className="text-xl font-semibold text-white mb-2">
+                      {hook.name}
+                    </h3>
+                    <p className="text-slate-300 mb-3">{hook.description}</p>
+                    <div className="bg-gray-900 rounded-lg p-3 border border-slate-600">
+                      <code className="text-slate-300 font-mono text-sm">
+                        {hook.usage}
+                      </code>
+                    </div>
+                  </div>
+                  <div className="p-6 bg-slate-750">
+                    <div className="flex items-center space-x-2">
+                      <span className="text-slate-400 text-sm">Returns:</span>
+                      <code className="text-slate-300 font-mono text-sm">
+                        {hook.returns}
+                      </code>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -430,6 +524,60 @@ export default function ApiReference() {
                     ))}
                   </tbody>
                 </table>
+              </div>
+            </div>
+          </section>
+
+          {/* Animations Section */}
+          <section>
+            <div className="flex items-center space-x-3 mb-8">
+              <div className="bg-slate-700 w-10 h-10 rounded-lg flex items-center justify-center">
+                <Zap className="h-5 w-5 text-slate-300" />
+              </div>
+              <h2 className="text-3xl font-semibold text-white">
+                Animation Styles
+              </h2>
+            </div>
+
+            <div className="bg-slate-800 rounded-xl border border-slate-700 p-6">
+              <p className="text-slate-300 mb-6">
+                Available CSS animations with their keyframe definitions:
+              </p>
+              <div className="space-y-4">
+                {animations.map((anim, index) => (
+                  <div
+                    key={index}
+                    className="bg-slate-900 border border-slate-600 rounded-lg p-4"
+                  >
+                    <div className="flex items-baseline space-x-3 mb-2">
+                      <code className="text-slate-200 font-semibold text-sm">
+                        {anim.name}
+                      </code>
+                      <span className="text-slate-400 text-sm">
+                        {anim.description}
+                      </span>
+                    </div>
+                    <div className="bg-gray-950 rounded-lg p-3 border border-slate-700">
+                      <code className="text-slate-400 font-mono text-xs">
+                        @keyframes react-skeletonify-{anim.name} {"{"}
+                        <br />
+                        <span className="ml-4">{anim.keyframes}</span>
+                        <br />
+                        {"}"}
+                      </code>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-6 p-4 bg-slate-900 border border-slate-600 rounded-lg">
+                <p className="text-slate-300 text-sm">
+                  <span className="font-semibold">Note:</span> The package automatically applies the <code className="text-slate-200 font-mono text-xs">.react-skeletonify</code> class with these animations. Import the CSS file to enable skeleton styles:
+                </p>
+                <div className="mt-3 bg-gray-950 rounded p-3 border border-slate-700">
+                  <code className="text-slate-400 font-mono text-xs">
+                    import 'react-skeletonify/dist/index.css';
+                  </code>
+                </div>
               </div>
             </div>
           </section>
