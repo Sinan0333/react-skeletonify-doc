@@ -227,10 +227,24 @@ export default function ApiReference() {
     <div className="min-h-screen bg-gray-900 pt-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-12">
-          <h1 className="text-4xl font-bold text-white mb-4">API Reference</h1>
-          <p className="text-xl text-slate-300">
-            Complete API documentation for all components, hooks, and utilities
-          </p>
+          <div className="flex items-start justify-between mb-4">
+            <div>
+              <h1 className="text-4xl font-bold text-white mb-4">API Reference</h1>
+              <p className="text-xl text-slate-300">
+                Complete API documentation for all components, hooks, and utilities
+              </p>
+            </div>
+            <div className="flex flex-col items-end space-y-2">
+              <div className="bg-slate-700 px-4 py-2 rounded-lg">
+                <span className="text-slate-400 text-sm">Package Version</span>
+                <p className="text-white font-semibold">v2.0.0</p>
+              </div>
+              <div className="text-slate-400 text-sm text-right">
+                <p>Last Updated</p>
+                <p className="text-slate-300">October 2, 2025</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="space-y-12">
@@ -244,6 +258,16 @@ export default function ApiReference() {
             </div>
 
             <div className="bg-slate-800 rounded-xl border border-slate-700 p-6">
+              <div className="mb-4">
+                <p className="text-slate-300 mb-3">
+                  Install the latest version:
+                </p>
+                <div className="bg-gray-900 rounded-lg p-4 border border-slate-600 overflow-x-auto mb-4">
+                  <pre className="text-slate-300 font-mono text-sm">
+{`npm install react-skeletonify@latest`}
+                  </pre>
+                </div>
+              </div>
               <p className="text-slate-300 mb-4">
                 All exported components, hooks, and types from react-skeletonify:
               </p>
@@ -644,6 +668,39 @@ function App() {
   );
 }`}
                   </pre>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Version Information Footer */}
+          <section>
+            <div className="bg-slate-800 rounded-xl border border-slate-700 p-6">
+              <div className="flex items-start space-x-4">
+                <div className="bg-blue-500/10 p-3 rounded-lg">
+                  <Package className="h-6 w-6 text-blue-400" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-white mb-2">
+                    Documentation Status
+                  </h3>
+                  <div className="space-y-2 text-slate-300 text-sm">
+                    <p>
+                      <span className="font-semibold text-slate-200">Current Package Version:</span> v2.0.0
+                    </p>
+                    <p>
+                      <span className="font-semibold text-slate-200">Documentation Last Updated:</span> October 2, 2025
+                    </p>
+                    <p className="text-slate-400 mt-3">
+                      This documentation is maintained for the latest stable release.
+                      If you're using an older version, some features may not be available.
+                      Always use the latest version for the best experience and newest features.
+                    </p>
+                  </div>
+                  <div className="mt-4 flex items-center space-x-2">
+                    <div className="h-2 w-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <span className="text-green-400 text-sm font-medium">Documentation Up to Date</span>
+                  </div>
                 </div>
               </div>
             </div>
