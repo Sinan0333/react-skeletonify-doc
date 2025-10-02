@@ -1,5 +1,5 @@
 import React from "react";
-import { Code, FileText, Zap, Settings2 } from "lucide-react";
+import { Code, FileText, Zap, Settings2, Tag, Palette } from "lucide-react";
 
 export default function ApiReference() {
   const components = [
@@ -64,9 +64,9 @@ export default function ApiReference() {
   const configOptions = [
     {
       name: "animation",
-      type: "string",
+      type: '"animation-1" | "animation-2"',
       default: '"animation-1"',
-      description: "Choose animation style (animation-1, animation-2, etc.)",
+      description: "Choose animation style",
     },
     {
       name: "animationSpeed",
@@ -81,10 +81,34 @@ export default function ApiReference() {
       description: "Background color for skeleton elements",
     },
     {
-      name: "borderRadius",
+      name: "border",
       type: "string",
-      default: '"4px"',
+      default: '"none"',
+      description: "Border style for skeleton elements",
+    },
+    {
+      name: "borderRadius",
+      type: "string | number",
+      default: '"0"',
       description: "Border radius for skeleton elements",
+    },
+    {
+      name: "textTagsMargin",
+      type: "string",
+      default: '"0"',
+      description: "Margin for text tags in skeleton elements",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: '""',
+      description: "Additional CSS class names",
+    },
+    {
+      name: "style",
+      type: "CSSProperties",
+      default: "{}",
+      description: "Inline style overrides",
     },
     {
       name: "exceptTags",
@@ -92,6 +116,30 @@ export default function ApiReference() {
       default: "[]",
       description: "Array of HTML tags to exclude from skeleton rendering",
     },
+    {
+      name: "exceptTagGroups",
+      type: "HtmlTagGroup[]",
+      default: "[]",
+      description: "Array of HTML tag groups to exclude from skeleton rendering",
+    },
+  ];
+
+  const htmlTagGroups = [
+    "TEXT_TAGS",
+    "STRUCTURE_TAGS",
+    "METADATA_TAGS",
+    "LIST_TAGS",
+    "TABLE_TAGS",
+    "FORM_TAGS",
+    "MEDIA_TAGS",
+    "INTERACTIVE_TAGS",
+    "MISC_TAGS",
+  ];
+
+  const defaultBackgrounds = [
+    { animation: "animation-1", background: "#aeaeae" },
+    { animation: "animation-2", background: "#e5e5e5" },
+    { animation: "animation-3", background: "hsl(210, 20%, 90%)" },
   ];
 
   return (
@@ -232,6 +280,89 @@ export default function ApiReference() {
             </div>
           </section>
 
+          {/* HTML Tag Groups Section */}
+          <section>
+            <div className="flex items-center space-x-3 mb-8">
+              <div className="bg-slate-700 w-10 h-10 rounded-lg flex items-center justify-center">
+                <Tag className="h-5 w-5 text-slate-300" />
+              </div>
+              <h2 className="text-3xl font-semibold text-white">
+                HTML Tag Groups
+              </h2>
+            </div>
+
+            <div className="bg-slate-800 rounded-xl border border-slate-700 p-6">
+              <p className="text-slate-300 mb-6">
+                Available tag groups that can be used with the <span className="font-mono text-slate-200">exceptTagGroups</span> configuration option:
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                {htmlTagGroups.map((group, index) => (
+                  <div
+                    key={index}
+                    className="bg-slate-900 border border-slate-600 rounded-lg px-4 py-3"
+                  >
+                    <code className="text-slate-300 text-sm">{group}</code>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Default Backgrounds Section */}
+          <section>
+            <div className="flex items-center space-x-3 mb-8">
+              <div className="bg-slate-700 w-10 h-10 rounded-lg flex items-center justify-center">
+                <Palette className="h-5 w-5 text-slate-300" />
+              </div>
+              <h2 className="text-3xl font-semibold text-white">
+                Default Backgrounds
+              </h2>
+            </div>
+
+            <div className="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden">
+              <div className="p-6 border-b border-slate-700">
+                <p className="text-slate-300">
+                  Default background colors for each animation style:
+                </p>
+              </div>
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-slate-700">
+                    <tr>
+                      <th className="text-left p-4 text-slate-200 font-medium">
+                        Animation
+                      </th>
+                      <th className="text-left p-4 text-slate-200 font-medium">
+                        Default Background
+                      </th>
+                      <th className="text-left p-4 text-slate-200 font-medium">
+                        Preview
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {defaultBackgrounds.map((item, index) => (
+                      <tr key={index} className="border-t border-slate-700">
+                        <td className="p-4 text-slate-300 font-mono text-sm">
+                          {item.animation}
+                        </td>
+                        <td className="p-4 text-slate-400 font-mono text-sm">
+                          {item.background}
+                        </td>
+                        <td className="p-4">
+                          <div
+                            className="w-20 h-8 rounded border border-slate-600"
+                            style={{ backgroundColor: item.background }}
+                          />
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
           {/* Usage Examples Section */}
           <section>
             <div className="flex items-center space-x-3 mb-8">
@@ -280,9 +411,13 @@ function App() {
     <SkeletonProvider
       config={{
         animation: "animation-1",
+        animationSpeed: 3,
+        background: "#aeaeae",
+        border: "none",
         borderRadius: "8px",
-        animationSpeed: 2,
-        exceptTags: ["button"]
+        textTagsMargin: "0",
+        exceptTags: ["button"],
+        exceptTagGroups: ["FORM_TAGS"]
       }}
     >
       <YourApp />
