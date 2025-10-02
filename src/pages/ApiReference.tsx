@@ -202,7 +202,7 @@ export default function ApiReference() {
   const defaultBackgrounds = [
     { animation: "animation-1", background: "#aeaeae" },
     { animation: "animation-2", background: "#e5e5e5" },
-    { animation: "animation-3", background: "hsl(210, 20%, 90%)" },
+    // { animation: "animation-3", background: "hsl(210, 20%, 90%)" },
   ];
 
   const animations = [
