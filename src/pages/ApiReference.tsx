@@ -216,11 +216,11 @@ export default function ApiReference() {
       description: "Shimmer/wave effect with moving background",
       keyframes: "100% { background-position: -100% 0; }",
     },
-    {
-      name: "animation-3",
-      description: "Color alternating effect between light shades",
-      keyframes: "0% { background-color: hsl(200, 20%, 80%); } 100% { background-color: hsl(200, 20%, 95%); }",
-    },
+    // {
+    //   name: "animation-3",
+    //   description: "Color alternating effect between light shades",
+    //   keyframes: "0% { background-color: hsl(200, 20%, 80%); } 100% { background-color: hsl(200, 20%, 95%); }",
+    // },
   ];
 
   return (
