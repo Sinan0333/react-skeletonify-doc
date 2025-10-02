@@ -1,7 +1,12 @@
-import React from "react";
-import { Code, FileText, Zap, Settings2, Tag, Palette, Package } from "lucide-react";
+import { Code, Zap, Settings2, Tag, Palette, Package } from "lucide-react";
+import useGetPackageDetails from "../hooks/useGetPackageDetails";
+import useGetDocDetails from "../hooks/useGetDocDetails";
+import convertDate from "../utils/convertDate";
 
 export default function ApiReference() {
+  const { version } = useGetPackageDetails();
+  const { lastUpdatedAt } = useGetDocDetails();
+
   const hooks = [
     {
       name: "useSkeleton",
@@ -129,7 +134,8 @@ export default function ApiReference() {
       name: "exceptTagGroups",
       type: "HtmlTagGroup[]",
       default: "[]",
-      description: "Array of HTML tag groups to exclude from skeleton rendering",
+      description:
+        "Array of HTML tag groups to exclude from skeleton rendering",
     },
   ];
 
@@ -138,65 +144,127 @@ export default function ApiReference() {
       name: "TEXT_TAGS",
       description: "Text & Content",
       tags: [
-        "p", "span", "h1", "h2", "h3", "h4", "h5", "h6", "b", "strong",
-        "i", "em", "u", "mark", "small", "sup", "sub", "abbr", "cite",
-        "q", "blockquote", "code", "pre", "samp", "kbd", "var", "time",
-        "br", "wbr"
-      ]
+        "p",
+        "span",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "b",
+        "strong",
+        "i",
+        "em",
+        "u",
+        "mark",
+        "small",
+        "sup",
+        "sub",
+        "abbr",
+        "cite",
+        "q",
+        "blockquote",
+        "code",
+        "pre",
+        "samp",
+        "kbd",
+        "var",
+        "time",
+        "br",
+        "wbr",
+      ],
     },
     {
       name: "STRUCTURE_TAGS",
       description: "Sectioning / Structure",
       tags: [
-        "html", "head", "body", "main", "header", "footer", "nav",
-        "section", "article", "aside"
-      ]
+        "html",
+        "head",
+        "body",
+        "main",
+        "header",
+        "footer",
+        "nav",
+        "section",
+        "article",
+        "aside",
+      ],
     },
     {
       name: "METADATA_TAGS",
       description: "Metadata",
-      tags: ["base", "link", "meta", "style", "title"]
+      tags: ["base", "link", "meta", "style", "title"],
     },
     {
       name: "LIST_TAGS",
       description: "Lists",
-      tags: ["ul", "ol", "li", "dl", "dt", "dd"]
+      tags: ["ul", "ol", "li", "dl", "dt", "dd"],
     },
     {
       name: "TABLE_TAGS",
       description: "Tables",
       tags: [
-        "table", "caption", "thead", "tbody", "tfoot", "tr", "th",
-        "td", "col", "colgroup"
-      ]
+        "table",
+        "caption",
+        "thead",
+        "tbody",
+        "tfoot",
+        "tr",
+        "th",
+        "td",
+        "col",
+        "colgroup",
+      ],
     },
     {
       name: "FORM_TAGS",
       description: "Forms & Inputs",
       tags: [
-        "form", "input", "textarea", "button", "label", "select",
-        "option", "optgroup", "fieldset", "legend", "datalist",
-        "output", "meter", "progress"
-      ]
+        "form",
+        "input",
+        "textarea",
+        "button",
+        "label",
+        "select",
+        "option",
+        "optgroup",
+        "fieldset",
+        "legend",
+        "datalist",
+        "output",
+        "meter",
+        "progress",
+      ],
     },
     {
       name: "MEDIA_TAGS",
       description: "Media",
       tags: [
-        "img", "audio", "video", "source", "track", "picture",
-        "iframe", "embed", "object", "map", "area", "canvas"
-      ]
+        "img",
+        "audio",
+        "video",
+        "source",
+        "track",
+        "picture",
+        "iframe",
+        "embed",
+        "object",
+        "map",
+        "area",
+        "canvas",
+      ],
     },
     {
       name: "INTERACTIVE_TAGS",
       description: "Interactive",
-      tags: ["details", "summary", "dialog", "script", "noscript", "template"]
+      tags: ["details", "summary", "dialog", "script", "noscript", "template"],
     },
     {
       name: "MISC_TAGS",
       description: "Other / Inline semantics",
-      tags: ["ins", "del", "s", "bdi", "bdo", "ruby", "rt", "rp"]
-    }
+      tags: ["ins", "del", "s", "bdi", "bdo", "ruby", "rt", "rp"],
+    },
   ];
 
   const defaultBackgrounds = [
@@ -209,7 +277,8 @@ export default function ApiReference() {
     {
       name: "animation-1",
       description: "Pulse/fade effect that transitions opacity",
-      keyframes: "0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; }",
+      keyframes:
+        "0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; }",
     },
     {
       name: "animation-2",
@@ -229,12 +298,15 @@ export default function ApiReference() {
         <div className="mb-12">
           <div className="flex items-start justify-between mb-4">
             <div>
-              <h1 className="text-4xl font-bold text-white mb-4">API Reference</h1>
+              <h1 className="text-4xl font-bold text-white mb-4">
+                API Reference
+              </h1>
               <p className="text-xl text-slate-300">
-                Complete API documentation for all components, hooks, and utilities
+                Complete API documentation for all components, hooks, and
+                utilities
               </p>
             </div>
-            <div className="flex flex-col items-end space-y-2">
+            {/* <div className="flex flex-col items-end space-y-2">
               <div className="bg-slate-700 px-4 py-2 rounded-lg">
                 <span className="text-slate-400 text-sm">Package Version</span>
                 <p className="text-white font-semibold">v2.0.0</p>
@@ -243,7 +315,7 @@ export default function ApiReference() {
                 <p>Last Updated</p>
                 <p className="text-slate-300">October 2, 2025</p>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -254,7 +326,9 @@ export default function ApiReference() {
               <div className="bg-slate-700 w-10 h-10 rounded-lg flex items-center justify-center">
                 <Package className="h-5 w-5 text-slate-300" />
               </div>
-              <h2 className="text-3xl font-semibold text-white">Package Exports</h2>
+              <h2 className="text-3xl font-semibold text-white">
+                Package Exports
+              </h2>
             </div>
 
             <div className="bg-slate-800 rounded-xl border border-slate-700 p-6">
@@ -264,16 +338,17 @@ export default function ApiReference() {
                 </p>
                 <div className="bg-gray-900 rounded-lg p-4 border border-slate-600 overflow-x-auto mb-4">
                   <pre className="text-slate-300 font-mono text-sm">
-{`npm install react-skeletonify@latest`}
+                    {`npm install react-skeletonify@latest`}
                   </pre>
                 </div>
               </div>
               <p className="text-slate-300 mb-4">
-                All exported components, hooks, and types from react-skeletonify:
+                All exported components, hooks, and types from
+                react-skeletonify:
               </p>
               <div className="bg-gray-900 rounded-lg p-4 border border-slate-600 overflow-x-auto">
                 <pre className="text-slate-300 font-mono text-sm">
-{`import {
+                  {`import {
   SkeletonWrapper,
   SkeletonProvider,
   useSkeleton,
@@ -465,14 +540,17 @@ import 'react-skeletonify/dist/index.css';`}
 
             <div className="bg-slate-800 rounded-xl border border-slate-700 p-6">
               <p className="text-slate-300 mb-6">
-                Available tag groups that can be used with the <span className="font-mono text-slate-200">exceptTagGroups</span> configuration option:
+                Available tag groups that can be used with the{" "}
+                <span className="font-mono text-slate-200">
+                  exceptTagGroups
+                </span>{" "}
+                configuration option:
               </p>
               <div className="space-y-4">
                 {htmlTagGroups.map((group, index) => (
                   <div
                     key={index}
-                    className="bg-slate-900 border border-slate-600 rounded-lg p-4"
-                  >
+                    className="bg-slate-900 border border-slate-600 rounded-lg p-4">
                     <div className="flex items-baseline space-x-3 mb-3">
                       <code className="text-slate-200 font-semibold text-sm">
                         {group.name}
@@ -485,8 +563,7 @@ import 'react-skeletonify/dist/index.css';`}
                       {group.tags.map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
-                          className="bg-slate-800 border border-slate-600 rounded px-2 py-1 text-xs font-mono text-slate-300"
-                        >
+                          className="bg-slate-800 border border-slate-600 rounded px-2 py-1 text-xs font-mono text-slate-300">
                           {tag}
                         </span>
                       ))}
@@ -571,8 +648,7 @@ import 'react-skeletonify/dist/index.css';`}
                 {animations.map((anim, index) => (
                   <div
                     key={index}
-                    className="bg-slate-900 border border-slate-600 rounded-lg p-4"
-                  >
+                    className="bg-slate-900 border border-slate-600 rounded-lg p-4">
                     <div className="flex items-baseline space-x-3 mb-2">
                       <code className="text-slate-200 font-semibold text-sm">
                         {anim.name}
@@ -595,7 +671,13 @@ import 'react-skeletonify/dist/index.css';`}
               </div>
               <div className="mt-6 p-4 bg-slate-900 border border-slate-600 rounded-lg">
                 <p className="text-slate-300 text-sm">
-                  <span className="font-semibold">Note:</span> The package automatically applies the <code className="text-slate-200 font-mono text-xs">.react-skeletonify</code> class with these animations. Import the CSS file to enable skeleton styles:
+                  <span className="font-semibold">Note:</span> The package
+                  automatically applies the{" "}
+                  <code className="text-slate-200 font-mono text-xs">
+                    .react-skeletonify
+                  </code>{" "}
+                  class with these animations. Import the CSS file to enable
+                  skeleton styles:
                 </p>
                 <div className="mt-3 bg-gray-950 rounded p-3 border border-slate-700">
                   <code className="text-slate-400 font-mono text-xs">
@@ -686,20 +768,29 @@ function App() {
                   </h3>
                   <div className="space-y-2 text-slate-300 text-sm">
                     <p>
-                      <span className="font-semibold text-slate-200">Current Package Version:</span> v2.0.0
+                      <span className="font-semibold text-slate-200">
+                        Current Package Version:
+                      </span>{" "}
+                      v{version}
                     </p>
                     <p>
-                      <span className="font-semibold text-slate-200">Documentation Last Updated:</span> October 2, 2025
+                      <span className="font-semibold text-slate-200">
+                        Documentation Last Updated:
+                      </span>{" "}
+                      {convertDate(lastUpdatedAt)}
                     </p>
                     <p className="text-slate-400 mt-3">
-                      This documentation is maintained for the latest stable release.
-                      If you're using an older version, some features may not be available.
-                      Always use the latest version for the best experience and newest features.
+                      This documentation is maintained for the latest stable
+                      release. If you're using an older version, some features
+                      may not be available. Always use the latest version for
+                      the best experience and newest features.
                     </p>
                   </div>
                   <div className="mt-4 flex items-center space-x-2">
                     <div className="h-2 w-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-green-400 text-sm font-medium">Documentation Up to Date</span>
+                    <span className="text-green-400 text-sm font-medium">
+                      Documentation Up to Date
+                    </span>
                   </div>
                 </div>
               </div>
