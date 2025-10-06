@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Play, Copy, Eye, EyeOff, User, Mail, Phone, MapPin, ShoppingCart, Star, Heart } from 'lucide-react';
+import { SkeletonWrapper } from 'react-skeletonify';
 
 export default function Examples() {
   const [activeExample, setActiveExample] = useState(0);
@@ -55,46 +56,37 @@ function ProfileCard({ loading }) {
   );
 }`,
       preview: (loading: boolean) => (
-        <div className={`bg-white rounded-lg p-6 shadow-sm ${loading ? 'react-skeletonify' : ''}`}
-          style={loading ? {
-            animation: 'react-skeletonify-animation-1 2s ease-in-out infinite',
-            background: 'linear-gradient(90deg, #e5e5e5 25%, #f0f0f0 50%, #e5e5e5 75%)',
-            backgroundSize: '200% 100%',
-          } : {}}>
-          <div className="flex items-center space-x-4">
-            <div className={`w-16 h-16 rounded-full flex items-center justify-center ${loading ? 'bg-gray-300' : 'bg-blue-500'}`}>
-              {!loading && <User className="w-8 h-8 text-white" />}
+        <SkeletonWrapper loading={loading}>
+          <div className="bg-white rounded-lg p-6 shadow-sm">
+            <div className="flex items-center space-x-4">
+              <div className="w-16 h-16 rounded-full flex items-center justify-center bg-blue-500">
+                <User className="w-8 h-8 text-white" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-lg mb-1 text-gray-900">
+                  Jane Doe
+                </h3>
+                <p className="text-sm text-gray-600">
+                  Frontend Developer
+                </p>
+              </div>
             </div>
-            <div className="flex-1">
-              <h3 className={`font-semibold text-lg mb-1 ${loading ? 'bg-gray-300 text-transparent rounded' : 'text-gray-900'}`}>
-                Jane Doe
-              </h3>
-              <p className={`text-sm ${loading ? 'bg-gray-300 text-transparent rounded w-32' : 'text-gray-600'}`}>
-                Frontend Developer
-              </p>
-            </div>
-          </div>
-          <div className="mt-4 space-y-2">
-            <div className="flex items-center text-gray-600">
-              <Mail className={`w-4 h-4 mr-2 ${loading ? 'text-transparent' : ''}`} />
-              <span className={loading ? 'bg-gray-300 text-transparent rounded w-48' : ''}>
-                jane.doe@example.com
-              </span>
-            </div>
-            <div className="flex items-center text-gray-600">
-              <Phone className={`w-4 h-4 mr-2 ${loading ? 'text-transparent' : ''}`} />
-              <span className={loading ? 'bg-gray-300 text-transparent rounded w-36' : ''}>
-                +1 (555) 123-4567
-              </span>
-            </div>
-            <div className="flex items-center text-gray-600">
-              <MapPin className={`w-4 h-4 mr-2 ${loading ? 'text-transparent' : ''}`} />
-              <span className={loading ? 'bg-gray-300 text-transparent rounded w-40' : ''}>
-                San Francisco, CA
-              </span>
+            <div className="mt-4 space-y-2">
+              <div className="flex items-center text-gray-600">
+                <Mail className="w-4 h-4 mr-2" />
+                <span>jane.doe@example.com</span>
+              </div>
+              <div className="flex items-center text-gray-600">
+                <Phone className="w-4 h-4 mr-2" />
+                <span>+1 (555) 123-4567</span>
+              </div>
+              <div className="flex items-center text-gray-600">
+                <MapPin className="w-4 h-4 mr-2" />
+                <span>San Francisco, CA</span>
+              </div>
             </div>
           </div>
-        </div>
+        </SkeletonWrapper>
       )
     },
     {
@@ -137,38 +129,30 @@ function ProductCard({ loading }) {
   );
 }`,
       preview: (loading: boolean) => (
-        <div className={`bg-white rounded-lg overflow-hidden shadow-sm ${loading ? 'react-skeletonify' : ''}`}
-          style={loading ? {
-            animation: 'react-skeletonify-animation-2 2s infinite',
-            background: 'linear-gradient(90deg, #e5e5e5 25%, #f0f0f0 50%, #e5e5e5 75%)',
-            backgroundSize: '200% 100%',
-          } : {}}>
-          <div className={`w-full h-48 flex items-center justify-center ${loading ? 'bg-gray-300' : 'bg-gradient-to-br from-purple-400 to-blue-500'}`}>
-            {!loading && <ShoppingCart className="w-16 h-16 text-white opacity-50" />}
-          </div>
-          <div className="p-4">
-            <h3 className={`font-bold text-lg mb-2 ${loading ? 'bg-gray-300 text-transparent rounded' : 'text-gray-900'}`}>
-              Premium Wireless Headphones
-            </h3>
-            <p className={`text-sm mb-1 ${loading ? 'bg-gray-300 text-transparent rounded' : 'text-gray-600'}`}>
-              High-quality sound with active noise
-            </p>
-            <p className={`text-sm mb-3 ${loading ? 'bg-gray-300 text-transparent rounded w-32' : 'text-gray-600'}`}>
-              cancellation
-            </p>
-            <div className="flex items-center justify-between mt-4">
-              <div className="flex items-baseline space-x-1">
-                <span className={`text-2xl font-bold ${loading ? 'bg-gray-300 text-transparent rounded px-2' : 'text-blue-600'}`}>
+        <SkeletonWrapper loading={loading} config={{ exceptTags: ["button"], borderRadius: "12px" }}>
+          <div className="bg-white rounded-lg overflow-hidden shadow-sm">
+            <div className="w-full h-48 flex items-center justify-center bg-gradient-to-br from-purple-400 to-blue-500">
+              <ShoppingCart className="w-16 h-16 text-white opacity-50" />
+            </div>
+            <div className="p-4">
+              <h3 className="font-bold text-lg mb-2 text-gray-900">
+                Premium Wireless Headphones
+              </h3>
+              <p className="text-sm text-gray-600 mb-3">
+                High-quality sound with active noise cancellation
+              </p>
+              <div className="flex items-center justify-between mt-4">
+                <span className="text-2xl font-bold text-blue-600">
                   $199.99
                 </span>
+                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2">
+                  <ShoppingCart className="w-4 h-4" />
+                  <span>Add to Cart</span>
+                </button>
               </div>
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2">
-                <ShoppingCart className="w-4 h-4" />
-                <span>Add to Cart</span>
-              </button>
             </div>
           </div>
-        </div>
+        </SkeletonWrapper>
       )
     },
     {
@@ -214,37 +198,32 @@ function BlogCard({ loading }) {
   );
 }`,
       preview: (loading: boolean) => (
-        <article className={`bg-white p-6 rounded-lg shadow-sm ${loading ? 'react-skeletonify' : ''}`}
-          style={loading ? {
-            animation: 'react-skeletonify-animation-3 1.5s linear infinite alternate',
-            background: '#e5e5e5',
-          } : {}}>
-          <div className="flex items-center space-x-2 mb-3">
-            <span className={`px-3 py-1 rounded-full text-xs ${loading ? 'bg-gray-300 text-transparent' : 'bg-blue-100 text-blue-600'}`}>
-              Tutorial
-            </span>
-            <span className={`text-sm ${loading ? 'bg-gray-300 text-transparent rounded px-2' : 'text-gray-500'}`}>
-              5 min read
-            </span>
-          </div>
-          <h2 className={`text-xl font-bold mb-2 ${loading ? 'bg-gray-300 text-transparent rounded' : 'text-gray-900'}`}>
-            Getting Started with React Skeletonify
-          </h2>
-          <p className={`mb-1 ${loading ? 'bg-gray-300 text-transparent rounded' : 'text-gray-600'}`}>
-            Learn how to create beautiful skeleton loaders
-          </p>
-          <p className={`mb-4 ${loading ? 'bg-gray-300 text-transparent rounded w-3/4' : 'text-gray-600'}`}>
-            in your React applications with zero configuration.
-          </p>
-          <div className="flex items-center justify-between">
-            <span className={`text-sm ${loading ? 'bg-gray-300 text-transparent rounded w-24' : 'text-gray-500'}`}>
-              March 15, 2024
-            </span>
-            <a href="#" className="text-blue-600 hover:underline">
-              Read more →
-            </a>
-          </div>
-        </article>
+        <SkeletonWrapper loading={loading} config={{ animation: "animation-3", exceptTags: ["a"] }}>
+          <article className="bg-white p-6 rounded-lg shadow-sm">
+            <div className="flex items-center space-x-2 mb-3">
+              <span className="px-3 py-1 rounded-full text-xs bg-blue-100 text-blue-600">
+                Tutorial
+              </span>
+              <span className="text-sm text-gray-500">
+                5 min read
+              </span>
+            </div>
+            <h2 className="text-xl font-bold mb-2 text-gray-900">
+              Getting Started with React Skeletonify
+            </h2>
+            <p className="text-gray-600 mb-4">
+              Learn how to create beautiful skeleton loaders in your React applications with zero configuration.
+            </p>
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-gray-500">
+                March 15, 2024
+              </span>
+              <a href="#" className="text-blue-600 hover:underline">
+                Read more →
+              </a>
+            </div>
+          </article>
+        </SkeletonWrapper>
       )
     },
     {
@@ -277,27 +256,24 @@ function NotificationList({ loading }) {
   );
 }`,
       preview: (loading: boolean) => (
-        <div className={`bg-white rounded-lg divide-y shadow-sm ${loading ? 'react-skeletonify' : ''}`}
-          style={loading ? {
-            animation: 'react-skeletonify-animation-1 2s ease-in-out infinite',
-            background: 'linear-gradient(90deg, #e5e5e5 25%, #f0f0f0 50%, #e5e5e5 75%)',
-            backgroundSize: '200% 100%',
-          } : {}}>
-          {[
-            { text: "New comment on your post", time: "2m ago" },
-            { text: "John liked your photo", time: "1h ago" },
-            { text: "New follower: Sarah", time: "3h ago" }
-          ].map((notif, i) => (
-            <div key={i} className="p-4 hover:bg-gray-50 transition-colors">
-              <p className={`mb-1 ${loading ? 'bg-gray-300 text-transparent rounded' : 'text-gray-900'}`}>
-                {notif.text}
-              </p>
-              <span className={`text-sm ${loading ? 'bg-gray-300 text-transparent rounded w-16' : 'text-gray-500'}`}>
-                {notif.time}
-              </span>
-            </div>
-          ))}
-        </div>
+        <SkeletonWrapper loading={loading}>
+          <div className="bg-white rounded-lg divide-y shadow-sm">
+            {[
+              { text: "New comment on your post", time: "2m ago" },
+              { text: "John liked your photo", time: "1h ago" },
+              { text: "New follower: Sarah", time: "3h ago" }
+            ].map((notif, i) => (
+              <div key={i} className="p-4 hover:bg-gray-50 transition-colors">
+                <p className="mb-1 text-gray-900">
+                  {notif.text}
+                </p>
+                <span className="text-sm text-gray-500">
+                  {notif.time}
+                </span>
+              </div>
+            ))}
+          </div>
+        </SkeletonWrapper>
       )
     },
     {
@@ -341,38 +317,32 @@ function ReviewCard({ loading }) {
   );
 }`,
       preview: (loading: boolean) => (
-        <div className={`bg-white p-6 rounded-lg shadow-sm ${loading ? 'react-skeletonify' : ''}`}
-          style={loading ? {
-            animation: 'react-skeletonify-animation-2 2s infinite',
-            background: 'linear-gradient(90deg, #e5e5e5 25%, #f0f0f0 50%, #e5e5e5 75%)',
-            backgroundSize: '200% 100%',
-          } : {}}>
-          <div className="flex items-start space-x-3 mb-3">
-            <div className={`w-12 h-12 rounded-full flex items-center justify-center ${loading ? 'bg-gray-300' : 'bg-green-500'}`}>
-              {!loading && <User className="w-6 h-6 text-white" />}
-            </div>
-            <div className="flex-1">
-              <h4 className={`font-semibold mb-1 ${loading ? 'bg-gray-300 text-transparent rounded w-32' : 'text-gray-900'}`}>
-                Michael Chen
-              </h4>
-              <div className="flex items-center space-x-1">
-                {[1,2,3,4,5].map(star => (
-                  <Star key={star} className={`w-4 h-4 ${loading ? 'text-transparent' : 'fill-yellow-400 text-yellow-400'}`} />
-                ))}
+        <SkeletonWrapper loading={loading} config={{ borderRadius: "8px", animation: "animation-2" }}>
+          <div className="bg-white p-6 rounded-lg shadow-sm">
+            <div className="flex items-start space-x-3 mb-3">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center bg-green-500">
+                <User className="w-6 h-6 text-white" />
               </div>
+              <div className="flex-1">
+                <h4 className="font-semibold mb-1 text-gray-900">
+                  Michael Chen
+                </h4>
+                <div className="flex items-center space-x-1">
+                  {[1,2,3,4,5].map(star => (
+                    <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+              </div>
+              <Heart className="w-5 h-5 text-gray-400 hover:text-red-500 cursor-pointer transition-colors" />
             </div>
-            {!loading && <Heart className="w-5 h-5 text-gray-400 hover:text-red-500 cursor-pointer transition-colors" />}
+            <p className="text-gray-700 mb-2">
+              Absolutely love this product! The quality exceeded my expectations and it arrived quickly.
+            </p>
+            <span className="text-sm text-gray-500">
+              Verified Purchase • 2 days ago
+            </span>
           </div>
-          <p className={`mb-1 ${loading ? 'bg-gray-300 text-transparent rounded' : 'text-gray-700'}`}>
-            Absolutely love this product! The quality exceeded
-          </p>
-          <p className={`mb-2 ${loading ? 'bg-gray-300 text-transparent rounded w-2/3' : 'text-gray-700'}`}>
-            my expectations and it arrived quickly.
-          </p>
-          <span className={`text-sm ${loading ? 'bg-gray-300 text-transparent rounded w-48' : 'text-gray-500'}`}>
-            Verified Purchase • 2 days ago
-          </span>
-        </div>
+        </SkeletonWrapper>
       )
     }
   ];
