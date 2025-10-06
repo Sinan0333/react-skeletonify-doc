@@ -26,6 +26,19 @@ export default function Header() {
     { path: "/about", label: "About" },
   ];
 
+  const externalLinks = [
+    {
+      name: "NPM",
+      link: "https://www.npmjs.com/package/react-skeletonify",
+      img: "/npm.png",
+    },
+    {
+      name: "GitHub",
+      link: "https://github.com/Sinan0333/react-skeletonify",
+      img: "/github.png",
+    },
+  ];
+
   return (
     <header className="bg-gray-900 shadow-lg border-b border-gray-700 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -39,16 +52,11 @@ export default function Header() {
                 alt="React Skeletonify Logo"
                 className="h-9 w-10 1"
               />
-              <div className="hidden sm:block">
+              <div className="block">
                 <h1 className="text-xl font-bold text-white">
                   React Skeletonify
                 </h1>
-                <p className="text-sm text-slate-400">Documentation Site</p>
-              </div>
-              <div className="sm:hidden">
-                <h1 className="text-lg font-bold text-white">
-                  React Skeletonify
-                </h1>
+                <p className="text-sm text-slate-400">v2.0.0</p>
               </div>
             </Link>
           </div>
@@ -67,6 +75,17 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
+            <div className="flex items-center space-x-2">
+              {externalLinks.map((link) => (
+                <Link to={link.link} target="_blank">
+                  <img
+                    src={link.img}
+                    alt={link.name}
+                    className="h-8 w-8 hover:opacity-80 transition-opacity"
+                  />
+                </Link>
+              ))}
+            </div>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -97,6 +116,15 @@ export default function Header() {
                       : "text-slate-300 hover:text-white hover:bg-slate-800"
                   }`}>
                   {link.label}
+                </Link>
+              ))}
+              {externalLinks.map((link) => (
+                <Link to={link.link} target="_blank">
+                  <img
+                    src={link.img}
+                    alt={link.name}
+                    className="h-8 w-8 hover:opacity-80 transition-opacity ml-4"
+                  />
                 </Link>
               ))}
             </nav>
