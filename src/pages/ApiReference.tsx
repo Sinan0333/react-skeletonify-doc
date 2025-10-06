@@ -4,7 +4,7 @@ import useGetDocDetails from "../hooks/useGetDocDetails";
 import convertDate from "../utils/convertDate";
 
 export default function ApiReference() {
-  const { version } = useGetPackageDetails();
+  const { version, createdAt } = useGetPackageDetails();
   const { lastUpdatedAt } = useGetDocDetails();
 
   const hooks = [
@@ -772,6 +772,12 @@ function App() {
                         Current Package Version:
                       </span>{" "}
                       v{version}
+                    </p>
+                    <p>
+                      <span className="font-semibold text-slate-200">
+                        Package Last Updated:
+                      </span>{" "}
+                      {convertDate(createdAt)}
                     </p>
                     <p>
                       <span className="font-semibold text-slate-200">

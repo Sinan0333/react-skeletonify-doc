@@ -1,8 +1,10 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import useGetPackageDetails from "../hooks/useGetPackageDetails";
 
 export default function Header() {
+  const {version} = useGetPackageDetails();
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
@@ -56,7 +58,7 @@ export default function Header() {
                 <h1 className="text-xl font-bold text-white">
                   React Skeletonify
                 </h1>
-                <p className="text-sm text-slate-400">v2.0.0</p>
+                <p className="text-sm text-slate-400">v{version}</p>
               </div>
             </Link>
           </div>

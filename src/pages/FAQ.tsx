@@ -121,10 +121,10 @@ export default function FAQ() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              to={"https://www.linkedin.com/in/mohammed-sinan-mp"}
+              to={"https://github.com/Sinan0333/react-skeletonify/discussions"}
               target="_blank">
               <button className="bg-slate-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-slate-500 transition-colors">
-                Connect With Creator
+                Github Discussion
               </button>
             </Link>
             <Link
