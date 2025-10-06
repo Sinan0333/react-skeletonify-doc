@@ -102,7 +102,7 @@ export default function ApiReference() {
     },
     {
       name: "borderRadius",
-      type: "string | number",
+      type: "string",
       default: '"0"',
       description: "Border radius for skeleton elements",
     },
