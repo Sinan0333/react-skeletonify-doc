@@ -29,9 +29,9 @@ export default function Hero() {
               <ArrowRight className="h-5 w-5" />
             </Link>
             <Link
-              to="/docs"
+              to="/api"
               className="border border-slate-600 text-slate-300 px-8 py-3 rounded-lg font-semibold hover:bg-slate-800 transition-colors text-center">
-              View Documentation
+              View API Reference
             </Link>
           </div>
 

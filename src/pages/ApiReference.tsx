@@ -332,7 +332,7 @@ export default function ApiReference() {
             </div>
 
             <div className="bg-slate-800 rounded-xl border border-slate-700 p-6">
-              <div className="mb-4">
+              {/* <div className="mb-4">
                 <p className="text-slate-300 mb-3">
                   Install the latest version:
                 </p>
@@ -341,7 +341,7 @@ export default function ApiReference() {
                     {`npm install react-skeletonify@latest`}
                   </pre>
                 </div>
-              </div>
+              </div> */}
               <p className="text-slate-300 mb-4">
                 All exported components, hooks, and types from
                 react-skeletonify:
