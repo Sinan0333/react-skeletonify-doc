@@ -18,7 +18,7 @@ export default function Header() {
 
   const navLinks = [
     { path: "/docs", label: "Documentation" },
-    { path: "/examples", label: "Examples" },
+    // { path: "/examples", label: "Examples" },
     { path: "/api", label: "API Reference" },
     { path: "/faq", label: "FAQ" },
     { path: "/blog", label: "Blog" },

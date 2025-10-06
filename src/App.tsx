@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Documentation from './pages/Documentation';
-import Examples from './pages/Examples';
+// import Examples from './pages/Examples';
 import ApiReference from './pages/ApiReference';
 import FAQ from './pages/FAQ';
 import Blog from './pages/Blog';
@@ -17,7 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Hero />} />
           <Route path="/docs" element={<Documentation />} />
-          <Route path="/examples" element={<Examples />} />
+          {/* <Route path="/examples" element={<Examples />} /> */}
           <Route path="/api" element={<ApiReference />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/blog" element={<Blog />} />
